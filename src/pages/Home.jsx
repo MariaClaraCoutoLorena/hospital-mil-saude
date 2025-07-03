@@ -25,8 +25,8 @@ function Home() {
   return (
     <>
       <Head/>
-      <ButtonCard/>
-      <ButtonCard/>
+      <ButtonCard>Consultar Histórico de Consultas</ButtonCard>
+      <ButtonCard>Consultar CID de Doenças</ButtonCard>
       <Footer/>
 
     </>

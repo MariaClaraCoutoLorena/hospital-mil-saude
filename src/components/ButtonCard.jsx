@@ -1,8 +1,8 @@
-function ButtonCard() {
+function ButtonCard(props) {
 
     return (
         <div className="buttoncard">
-            <a href="">Lalala</a>
+            <a href="">{props.children}</a>
         </div>
     );
   }
