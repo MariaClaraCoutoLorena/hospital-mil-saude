@@ -26,7 +26,7 @@ function Home() {
       <div>
         {medicos.map((medico) => (
           <div key={medico.id}>
-            <h1>{medico.name}</h1>
+            <h1>{medico.nome}</h1>
             <h2>{medico.especialidade}</h2>
           <div>
               <p>{medico.email}</p>
