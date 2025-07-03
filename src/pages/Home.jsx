@@ -35,17 +35,6 @@ function Home() {
         ))}
       </div>
 
-      <div className="card">
-        <button onClick={() => console.log("Replace with real logic")}>
-          count is 25
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
