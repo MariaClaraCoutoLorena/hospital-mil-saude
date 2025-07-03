@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Coming Soon';
+  font-family: "Coming Soon", cursive;
   line-height: 1.5;
   font-weight: 400;
 
@@ -96,7 +96,7 @@ body {
   align-items: center;
   width: 50vw;
   height: 14vh;
-  margin: 0vh 25vw 3vh 25vw;
+  margin: 0vh 24.5vw 3vh 24.5vw;
   border: 0.2vh solid #072000;
   border-radius: 1vh;
 }
@@ -108,7 +108,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; 
-  font-size: 3.4vh;
+  font-size: 3.3vh;
   padding: 0.5vh;
   width: 50vw;
   height: 14vh;
