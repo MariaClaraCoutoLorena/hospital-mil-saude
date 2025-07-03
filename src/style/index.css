@@ -116,3 +116,34 @@ body {
   outline: none;
   text-decoration: none;
 }
+
+.DiseaseCard {
+  background-color: #d4f5d4;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px auto;
+  width: 320px;                            /* largura fixa para todos os cards */
+  height: 100px;                           /* altura padrão (ajustável) */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  border: 1px solid #9ec99e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  word-wrap: break-word;                   /* quebra palavras longas */
+  overflow: hidden;
+}
+
+.DiseaseName {
+  font-size: 1.3em;
+  margin-bottom: 4px;
+  color: #1f2f1f;
+  line-height: 1.2;
+}
+
+.DiseaseCID {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.1;
+}
