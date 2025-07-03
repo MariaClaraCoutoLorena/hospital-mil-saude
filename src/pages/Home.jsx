@@ -5,7 +5,7 @@ import { getDocs, collection } from 'firebase/firestore';
 function Home() {
   const [medicos, setMedicos] = useState([]); // ✅ Fixed: initialized as an array
 
-  const dbRef = collection(database, 'doctors');
+  const dbRef = collection(database, 'medicos');
 
   useEffect(() => {
     const getDoctors = async () => {
