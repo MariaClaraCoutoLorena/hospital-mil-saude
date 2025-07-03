@@ -2,7 +2,7 @@ function ButtonCard(props) {
 
     return (
         <div className="buttoncard">
-            <a href="">{props.children}</a>
+            <a href={props.route_direct}>{props.children}</a>
         </div>
     );
   }
