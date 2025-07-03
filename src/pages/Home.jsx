@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { database } from '../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
 import Footer from '../components/Footer';
+import Head from '../components/Head';
 
 function Home() {
   const [medicos, setMedicos] = useState([]); // ✅ Fixed: initialized as an array
@@ -22,6 +23,7 @@ function Home() {
 
   return (
     <>
+      <Head/>
       <h1>Hospital Mil Saude</h1>
 
       <div>
