@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.8.0",
+    "@google-cloud/firestore": "^7.11.2",
     "dotenv": "^17.0.1",
     "firebase": "^11.10.0",
     "node": "^22.17.0",
