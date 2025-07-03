@@ -105,7 +105,12 @@ body {
   background-color: #86b183;
 }
 .buttoncard a {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
   font-size: 7vh;
+  width: 50vw;
+  height: 14vh;
   color: #072000;
   outline: none;
   text-decoration: none;
