@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <h1>Hospital Mil Saude</h1></h1>
+      <h1>Hospital Mil Saude</h1>
 
       <div>
         {medicos.map((medico) => (
