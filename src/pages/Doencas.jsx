@@ -4,45 +4,34 @@ import Head from "../components/Head";
 import DiseaseCard from "../components/DiseaseCard"
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { database } from '../config/firebase-config';
+import DiseaseFeed from "../components/DiseaseFeed"
 
 function Doencas() {
   
-  const [doencas, setDoencas] = useState([]);
+  const [selectedSymptom, setSymptom] = useState('*');
+  
+  const handleSymptomChange = (event) => {
 
-  const dbRef = collection(database, 'doencas');
-  console.log("yes");
-  useEffect(
-    () => {
-      const getDoencas = async () =>{
-
-        const query_result = query(dbRef, where("sintomas", "array-contains", 'febre'));
-
-        const returnedDocs = await getDocs(query_result);
-
-        // returnedDocs.forEach((doc) => {
-        //   console.log(doc.data());
-        // })
-        const diseaseList = [];
-
-         returnedDocs.forEach(
-          (d) => diseaseList.push({id:d, ...d.data()})
-        );
-        setDoencas(diseaseList);
-      }
-      getDoencas();
-    }, []
-  )
-
+    const newArray = [...event.target.selectedOptions].map((option) => option.value);
+    setSymptom(newArray);
+  }
 
   return (
     <>
       <Head/>
       <h1>Hospital Mil Saude</h1>
       <h1>Doencas</h1>
-      {doencas.map(
-        (d) => (<DiseaseCard name={d.nome} cid={d.cid}></DiseaseCard>)
-        // (d) => (<h1>OLÀ</h1>)
-      )}
+
+      <select name="sitomas" defaultValue={["*", "febre"]} multiple={true} onChange={handleSymptomChange}>
+          <option value="*">Todos</option>
+          <option value="febre">Febre</option>
+          <option value="cianose">Cianose</option>
+      </select>
+      <DiseaseFeed symptom={selectedSymptom}/>
+        {/* {doencas.map(
+          (d) => (<DiseaseCard name={d.nome} cid={d.cid} symptoms={d.sintomas.map((sintoma,i)=>i!=d.sintomas.length-1 ? sintoma + ', ' : sintoma)}></DiseaseCard>)
+          // (d) => (<h1>OLÀ</h1>)
+        )} */}
       <Footer/>
     </>
   );

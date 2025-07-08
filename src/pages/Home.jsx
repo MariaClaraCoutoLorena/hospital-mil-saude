@@ -6,7 +6,7 @@ import Head from '../components/Head';
 import ButtonCard from '../components/ButtonCard';
 
 function Home() {
-  const [medicos, setMedicos] = useState([]); // ✅ Fixed: initialized as an array
+  const [medicos, setMedicos] = useState([]);
 
   const dbRef = collection(database, 'medicos');
 
@@ -17,7 +17,7 @@ function Home() {
         ...doc.data(),
         id: doc.id,
       }));
-      setMedicos(filter); // ✅ Set state correctly
+      setMedicos(filter); 
     };
     getDoctors();
   }, []);
