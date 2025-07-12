@@ -1,0 +1,11 @@
+
+{
+    "collection": "medicos",
+    "schema": ["crm", "email", "especialidade", "nome"],
+    "data": [
+        ["1545", "joe@doe.com", "ortopedista", "joe"],
+        ["1425655", "jane@doe.com", "cardiologista", "jane"]
+
+    ]
+
+}

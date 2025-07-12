@@ -116,3 +116,51 @@ body {
   outline: none;
   text-decoration: none;
 }
+
+.DiseaseCard {
+  background-color: #d4f5d4;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 12px auto;
+  width: 95vw;                          
+  max-width: none;                      
+  height: 110px;                     
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  font-family: "Coming Soon", cursive;
+  border: 1px solid #9ec99e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.DiseaseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.DiseaseName {
+  font-size: 1.4em;
+  color: #1f2f1f;
+  font-weight: bold;
+}
+
+.DiseaseCID {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold;
+}
+
+.DiseaseDesc {
+  font-size: 1em;
+  color: #444;
+  text-align: left;
+}
+
+
+.dieseasefeed{
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
