@@ -18,19 +18,14 @@ function Home() {
   
       if (docMedico.exists()) {
         setMedico({ ...docMedico.data(), id: docMedico.id });
-        console.log(medico)
       } else {
         console.log("Médico não encontrado");
       }
     };
   
     getDoctorById();
-  
+
   }, []);
-        
-  if (!medico.id) {
-    return <div>Carregando...</div>;
-  }
 
   return (
     <>
