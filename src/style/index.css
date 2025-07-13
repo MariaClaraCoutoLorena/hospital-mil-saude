@@ -117,7 +117,7 @@ body {
   text-decoration: none;
 }
 
-.DiseaseCard {
+.card {
   background-color: #d4f5d4;
   border-radius: 10px;
   padding: 16px 20px;
@@ -134,7 +134,7 @@ body {
   box-sizing: border-box;
 }
 
-.DiseaseHeader {
+.cardHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,20 +147,39 @@ body {
   font-weight: bold;
 }
 
+.consultaName {
+  font-size: 1.4em;
+  color: #1f2f1f;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+.consultaName p{
+  font-size: 0.7em;
+  margin-left: 0.5rem;
+  align-items: center;
+}
+
+
 .DiseaseCID {
   font-size: 1.1em;
   color: #333;
   font-weight: bold;
 }
 
-.DiseaseDesc {
+.cardDesc {
   font-size: 1em;
   color: #444;
   text-align: left;
 }
 
 
-.dieseasefeed{
+.feed{
   flex: 1 1 auto;
   overflow-y: auto;
 }
