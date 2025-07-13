@@ -4,6 +4,7 @@ import { getDoc, doc } from 'firebase/firestore';
 import Footer from "../components/Footer";
 import Head from "../components/Head";
 import ConsultasFeed from "../components/ConsultasFeed";
+import lupa from "../assets/lupa.svg"
 
 function Consultas() {
   const [medico, setMedico] = useState({});
@@ -52,19 +53,19 @@ function Consultas() {
       
       <main className="container-centralizado">
         
-{/*         
+        
 
         <div className="filtros-container">
           <div className="filtro-com-icone">
             <img className='image-icons' src={lupa} alt="" />
             <input type="text" placeholder="Pesquise o nome do paciente" onChange={handleNameSearchChange}/>
           </div>
-          
+{/*           
           <div className="filtro-com-icone">
             <img className='image-icons' src={check} alt="" />
-          </div>
+          </div> */}
           
-        </div> */}
+        </div>
 
         <ConsultasFeed crm ={medico.crm} selectedDatas={selectedDatas} nameSearch={selectedNameSearch}/>
 

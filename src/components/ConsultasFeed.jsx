@@ -35,80 +35,87 @@ function ConsultasFeed(props) {
   const [consultas, setConsultas] = useState([]);
 
   const dbRef = collection(database, 'consultas');
-  useEffect(
-    () => {
-      
-      const getConsultas = async () =>{
-        var query_result = dbRef
-        // if(props.datas.includes('*')) {
-        //   if(props.nameSearch==""){
-        //     var returnedDocs = await getDocs(dbRef);
-        //   } else{
-        //     query_result = query(dbRef, where("nome", "==", props.nameSearch));
-        //     var returnedDocs = await getDocs(query_result);
-        //   }
-          
-        // } else {
-        //   console.log(props)
-        //   var query_result = ""
-        //   if(props.nameSearch==""){
-        //     query_result = query(dbRef, where("sintomas", "array-contains-any", props.symptom));
-        //     console.log("Sintomas filtrados")
-        //   } else{
-        //     query_result = query(dbRef, 
-        //                               where("sintomas", "array-contains-any", props.symptom),
-        //                               where("nome", "==", props.nameSearch)
-        //                             );
-        //     console.log("Nome pesquisado")
-        //   }
-        //   var returnedDocs = await getDocs(query_result);
-        // }
-        if(props.crm){
-          query_result = query(dbRef, where("crm", "==", props.crm));
-        }
-        var returnedDocs = await getDocs(query_result);
-        var consultasLista = [];
-        var dados_card = [];
+  useEffect(() => {
+    const getConsultas = async () =>{
+      var query_result = dbRef
 
-        returnedDocs.forEach(
-          (d) => consultasLista.push({
-              id:d,
-             ...d.data(),
-             data_consulta: formatarTimestamp(d.data().data_consulta)
-            })
-        );        
-        const cpfs = [...new Set(consultasLista.map(c => c.cpf))];
-        
-        if (cpfs.length>0) {
-          const pacientesRef = collection(database, 'pacientes');
-          const pacientesQuery = query(pacientesRef, where("CPF", "in", cpfs));
-          const returnedPacientes = await getDocs(pacientesQuery);
-          
-          const pacientesLista = [];
-          returnedPacientes.forEach(d => {
-              pacientesLista.push({
-                ...d.data(),
-                idade: calcularIdade(d.data().nascimento)
-              });
-          });
-          dados_card = consultasLista.map( consulta =>{
-            var paciente = pacientesLista.find(paciente => paciente.CPF === consulta.cpf);
-            return {
-              ...consulta,
-              nome: paciente ? paciente.nome : 'Paciente não identificado',
-              idade: paciente ? paciente.idade : 0
-            };
-          })
-          console.log(dados_card)
-
-        }
-        else {
-          dados_card = consultasLista
-        }
-
-        setConsultas(dados_card);
+      if(props.crm){
+        query_result = query(dbRef, where("crm", "==", props.crm));
       }
-      getConsultas();
+      var returnedDocs = await getDocs(query_result);
+      var consultasLista = [];
+      var dados_card = [];
+
+      returnedDocs.forEach(
+        (d) => consultasLista.push({
+            id:d,
+            ...d.data(),
+            data_consulta_format: formatarTimestamp(d.data().data_consulta)
+          })
+      );        
+      const cpfs = [...new Set(consultasLista.map(c => c.cpf))];
+      
+      if (cpfs.length>0) {
+        const pacientesRef = collection(database, 'pacientes');
+        const pacientesQuery = query(pacientesRef, where("CPF", "in", cpfs));
+        const returnedPacientes = await getDocs(pacientesQuery);
+        
+        const pacientesLista = [];
+        returnedPacientes.forEach(d => {
+            pacientesLista.push({
+              ...d.data(),
+              idade: calcularIdade(d.data().nascimento)
+            });
+        });
+        dados_card = consultasLista.map( consulta =>{
+          var paciente = pacientesLista.find(paciente => paciente.CPF === consulta.cpf);
+          return {
+            ...consulta,
+            nome: paciente ? paciente.nome : 'Paciente não identificado',
+            idade: paciente ? paciente.idade : 0
+          };
+        })
+        console.log(dados_card)
+
+      }
+      else {
+        dados_card = consultasLista
+      }
+
+      if(props.nameSearch != ""){
+        dados_card = dados_card.filter(consulta => {
+          return consulta.nome.toLowerCase().includes(props.nameSearch.toLowerCase());
+        });
+
+      }
+
+          // if(props.datas.includes('*')) {
+          //   if(props.nameSearch==""){
+          //     var returnedDocs = await getDocs(dbRef);
+          //   } else{
+          //     query_result = query(dbRef, where("nome", "==", props.nameSearch));
+          //     var returnedDocs = await getDocs(query_result);
+          //   }
+            
+          // } else {
+          //   console.log(props)
+          //   var query_result = ""
+          //   if(props.nameSearch==""){
+          //     query_result = query(dbRef, where("sintomas", "array-contains-any", props.symptom));
+          //     console.log("Sintomas filtrados")
+          //   } else{
+          //     query_result = query(dbRef, 
+          //                               where("sintomas", "array-contains-any", props.symptom),
+          //                               where("nome", "==", props.nameSearch)
+          //                             );
+          //     console.log("Nome pesquisado")
+          //   }
+          //   var returnedDocs = await getDocs(query_result);
+          // }
+
+      setConsultas(dados_card);
+    }
+    getConsultas();
     }, [props]
   )
 
@@ -116,7 +123,7 @@ function ConsultasFeed(props) {
   return (
     <div className='feed'>
         {consultas.map(
-          (d, index) => (<ConsultaCard key={d.id} descricao={d.detalhes} data_consulta={d.data_consulta} nome={d.nome} idade={d.idade}></ConsultaCard>)
+          (d, index) => (<ConsultaCard key={d.id} descricao={d.detalhes} data_consulta={d.data_consulta_format} nome={d.nome} idade={d.idade}></ConsultaCard>)
         )}
     </div>
   );
