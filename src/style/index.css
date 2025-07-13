@@ -199,6 +199,23 @@ body {
   min-width: 90vw;
 }
 
+.filtroData {
+  display: flex;
+  align-items: center;
+  background-color: #d4f5d4;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  width: 18rem;
+  font-size: 0.8rem;
+}
+
+.filtroData input {
+  background-color: transparent;
+  border: none;
+  color: #5e8c6a;
+  outline: none; 
+}
+
 .filtro-com-icone {
   display: flex;
   align-items: center;
@@ -208,7 +225,7 @@ body {
 }
 
 .filtro-com-icone input {
-  width: 55vw;
+  width: 45vw;
   background-color: transparent;
   border: none;
   margin-left: 1rem;
@@ -218,7 +235,7 @@ body {
 }
 
 .dropdown-container {
-  width: 20vw;
+  width: 16rem;
   position: relative;
 }
 
