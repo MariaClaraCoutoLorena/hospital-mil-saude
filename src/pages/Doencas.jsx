@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Head from "../components/Head";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { database } from '../config/firebase-config';
 import DiseaseFeed from "../components/DiseaseFeed"
 import ButtonCard from "../components/ButtonCard";
@@ -25,7 +25,6 @@ function Doencas() {
       const docMedico = await getDoc(dbRef);
   
       if (docMedico.exists()) {
-        console.log(docMedico)
         setMedico({ ...docMedico.data(), id: docMedico.id });
       } else {
         setMedico(null);
@@ -35,18 +34,34 @@ function Doencas() {
     getDoctorById();
   }, []);
 
-  const sintomas = [
-    { value: '*', label: 'Todos' },
-    { value: 'febre', label: 'Febre' },
-    { value: 'cianose', label: 'Cianose' },
-    { value: 'dor de cabeca', label: 'Dor de Cabeça' },
-    { value: 'calafrios', label: 'Calafrios' },
-    { value: 'tosse', label: 'Tosse' },
-    { value: 'dor muscular', label: 'Dor Muscular' },
-    { value: 'falta de apetite', label: 'Falta de apetite' },
-    { value: 'nausea', label: 'Náusea' },
-    { value: 'dificuldade respiratoria', label: 'Dificuldade Respiratória' }
-  ];
+  const [sintomas, setSintomas] = useState([{ value: '*', label: 'Todos' }]);
+  useEffect(() => {
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+    const getSintomas = async () => {
+      const dbRef = collection(database, 'doencas');
+      const docDoencas = await getDocs(dbRef);
+
+      let sintomasBanco = [];
+
+      docDoencas.forEach(d => {
+        sintomasBanco.push(...d.data().sintomas);
+      })
+
+      sintomasBanco = [...new Set(sintomasBanco)];
+
+      const sintomasFormatados = sintomasBanco.map(sintoma => ({
+        value: sintoma,
+        label: sintoma.charAt(0).toUpperCase() + sintoma.slice(1)
+      }));
+
+      setSintomas([{ value: '*', label: 'Todos' }, ...sintomasFormatados]);
+
+    };
+    getSintomas();
+  }, []);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSymptom, setSymptom] = useState(['*']);
