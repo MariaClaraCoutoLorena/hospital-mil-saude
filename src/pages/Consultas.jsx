@@ -6,12 +6,13 @@ import Head from "../components/Head";
 import ConsultasFeed from "../components/ConsultasFeed";
 import lupa from "../assets/lupa.svg"
 import calendario from "../assets/calendario.png"
+import { useParams } from 'react-router-dom';
 
 
 function Consultas() {
   const [medico, setMedico] = useState({});
   
-  const id = 'cXrZqbso4inFPbFHbD8f';
+  const { id } = useParams();
   
   const dbRef = doc(database, 'medicos', id);
     

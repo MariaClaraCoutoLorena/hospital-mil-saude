@@ -6,9 +6,12 @@ import { database } from '../config/firebase-config';
 import DiseaseFeed from "../components/DiseaseFeed"
 import lupa from '../assets/lupa.svg'
 import check from '../assets/check.svg'
+import { useParams } from 'react-router-dom';
 
 function Doencas() {
   
+  const { id } = useParams();
+
   const sintomas = [
     { value: '*', label: 'Todos' },
     { value: 'febre', label: 'Febre' },
@@ -42,9 +45,7 @@ function Doencas() {
   }
 
   const [medico, setMedico] = useState({});
-    
-  const id = 'cXrZqbso4inFPbFHbD8f';
-    
+        
   const dbRef = doc(database, 'medicos', id);
       
   useEffect(() => {

@@ -31,8 +31,10 @@ function Home() {
   return (
     <>
       <Head medico_nome={medico.nome} medico_crm={medico.crm}> </Head>
-      <ButtonCard route_direct="/consultas">Consultar Histórico de Consultas</ButtonCard>
-      <ButtonCard route_direct="/doencas">Consultar CID de Doenças</ButtonCard>
+      <main className="container-centralizado">
+        <ButtonCard route_direct="/consultas" id_info={id}>Consultar Histórico de Consultas</ButtonCard>
+        <ButtonCard route_direct="/doencas" id_info={id}>Consultar CID de Doenças</ButtonCard>
+      </main>
       <Footer/>
 
     </>
