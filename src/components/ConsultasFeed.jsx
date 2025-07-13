@@ -37,11 +37,31 @@ function ConsultasFeed(props) {
   const dbRef = collection(database, 'consultas');
   useEffect(() => {
     const getConsultas = async () =>{
+      var conditions = []
       var query_result = dbRef
 
+      
+      
+
       if(props.crm){
-        query_result = query(dbRef, where("crm", "==", props.crm));
+        conditions = [where("crm", "==", props.crm)];
+
+        if(props.dataInicio){
+          const [ano, mes, dia] = props.dataInicio.split('-');
+          var dataInicioObj = new Date(ano, mes - 1, dia);
+          conditions.push(where("data_consulta", ">=", dataInicioObj))
+        }
+        if(props.dataFim){
+          const [ano, mes, dia] = props.dataFim.split('-');
+          const dataFimObj = new Date(ano, mes - 1, dia);
+          dataFimObj.setHours(23, 59, 59, 999);
+          conditions.push(where("data_consulta", "<=", dataFimObj))
+        }
+        query_result = query(dbRef, ...conditions);
+      } else {
+        return
       }
+
       var returnedDocs = await getDocs(query_result);
       var consultasLista = [];
       var dados_card = [];
@@ -88,6 +108,7 @@ function ConsultasFeed(props) {
         });
 
       }
+
 
           // if(props.datas.includes('*')) {
           //   if(props.nameSearch==""){

@@ -46,6 +46,9 @@ function Consultas() {
     setNameSearch(event.target.value);
   }
 
+  const [dataInicio, setDataInicio] = useState('');
+  const [dataFim, setDataFim] = useState('');
+
 
   return (
     <>
@@ -60,14 +63,25 @@ function Consultas() {
             <img className='image-icons' src={lupa} alt="" />
             <input type="text" placeholder="Pesquise o nome do paciente" onChange={handleNameSearchChange}/>
           </div>
-{/*           
-          <div className="filtro-com-icone">
-            <img className='image-icons' src={check} alt="" />
-          </div> */}
+          
+          <div className="filtroData">
+            <img className='image-icons' src={lupa} alt="" />
+            <input 
+              type="date" 
+              value={dataInicio}
+              onChange={(e) => setDataInicio(e.target.value)}
+            />
+            <span style={{ margin: '0 10px' }}>até</span>
+            <input 
+              type="date" 
+              value={dataFim}
+              onChange={(e) => setDataFim(e.target.value)}
+            />
+          </div>
           
         </div>
 
-        <ConsultasFeed crm ={medico.crm} selectedDatas={selectedDatas} nameSearch={selectedNameSearch}/>
+        <ConsultasFeed crm ={medico.crm} selectedDatas={selectedDatas} nameSearch={selectedNameSearch} dataInicio={dataInicio} dataFim={dataFim}/>
 
       </main>
 
