@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Head from "../components/Head";
-import DiseaseCard from "../components/DiseaseCard"
-import { getDocs, collection, query, where, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { database } from '../config/firebase-config';
 import DiseaseFeed from "../components/DiseaseFeed"
+import lupa from '../assets/lupa.svg'
 
 function Doencas() {
   
@@ -51,13 +51,11 @@ function Doencas() {
         
         
 
-        <div>
-          <input
-            type="text"
-            name="filtroNome"
-            placeholder="Pesquisar pelo nome da doença"
-            onChange={handleNameSearchChange}
-          />
+        <div className="filtros-container">
+          <div className="input-com-icone">
+            <img className='image-icons' src={lupa} alt="" />
+            <input type="text" placeholder="Pesquise o nome da doença" onChange={handleNameSearchChange}/>
+          </div>
           
           <select name="sitomas" defaultValue={["*", "febre"]} multiple={true} onChange={handleSymptomChange}>
               <option value="*">Todos</option>
