@@ -20,25 +20,18 @@ function DiseaseFeed(props) {
           }
           
         } else {
-          console.log(props)
           var query_result = ""
           if(props.nameSearch==""){
             query_result = query(dbRef, where("sintomas", "array-contains-any", props.symptom));
-            console.log("Sintomas filtrados")
           } else{
             query_result = query(dbRef, 
                                       where("sintomas", "array-contains-any", props.symptom),
                                       where("nome", "==", props.nameSearch)
                                     );
-            console.log("Nome pesquisado")
           }
           var returnedDocs = await getDocs(query_result);
         }
 
-
-        // returnedDocs.forEach((doc) => {
-        //   console.log(doc.data());
-        // })
         const diseaseList = [];
 
          returnedDocs.forEach(
