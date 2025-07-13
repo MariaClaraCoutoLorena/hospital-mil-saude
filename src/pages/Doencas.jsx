@@ -4,6 +4,7 @@ import Head from "../components/Head";
 import { doc, getDoc } from "firebase/firestore";
 import { database } from '../config/firebase-config';
 import DiseaseFeed from "../components/DiseaseFeed"
+import ButtonCard from "../components/ButtonCard";
 import lupa from '../assets/lupa.svg'
 import check from '../assets/check.svg'
 import { useParams } from 'react-router-dom';
@@ -11,6 +12,28 @@ import { useParams } from 'react-router-dom';
 function Doencas() {
   
   const { id } = useParams();
+  const [medico, setMedico] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+    const dbRef = doc(database, 'medicos', id);
+    const getDoctorById = async () => {
+      const docMedico = await getDoc(dbRef);
+  
+      if (docMedico.exists()) {
+        console.log(docMedico)
+        setMedico({ ...docMedico.data(), id: docMedico.id });
+      } else {
+        setMedico(null);
+      }
+      setLoading(false);
+    };
+    getDoctorById();
+  }, []);
 
   const sintomas = [
     { value: '*', label: 'Todos' },
@@ -44,24 +67,28 @@ function Doencas() {
     setNameSearch(event.target.value);
   }
 
-  const [medico, setMedico] = useState({});
-        
-  const dbRef = doc(database, 'medicos', id);
-      
-  useEffect(() => {
-    const getDoctorById = async () => {
-      const docMedico = await getDoc(dbRef);
-  
-      if (docMedico.exists()) {
-        setMedico({ ...docMedico.data(), id: docMedico.id });
-      } else {
-        console.log("Médico não encontrado");
-      }
-    };
-  
-    getDoctorById();
-  
-  }, []);
+  if (loading) {
+    return (
+      <>
+        <main className="container-centralizado">
+          <h1> Carregando . . .</h1>
+        </main>
+        <Footer/>
+      </>
+    );
+  }
+
+  if (!id || !medico) {
+    return (
+      <>
+        <main className="container-centralizado">
+          <p>Você não está logado ou o médico não foi encontrado.</p>
+          <ButtonCard route_direct="/login"> Ir para página de login</ButtonCard>
+        </main>
+        <Footer/>
+      </>
+    );
+  }
 
   return (
     <>
