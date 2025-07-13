@@ -41,7 +41,6 @@ function DiseaseFeed(props) {
     <div class='diseasefeed'>
         {doencas.map(
           (d, index) => (<DiseaseCard key={index}name={d.nome} cid={d.cid} symptoms={d.sintomas.map((sintoma,i)=>i!=d.sintomas.length-1 ? sintoma + ', ' : sintoma)}></DiseaseCard>)
-          // (d) => (<h1>OLÀ</h1>)
         )}
     </div>
   );
