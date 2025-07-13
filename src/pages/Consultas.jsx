@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import Head from "../components/Head";
 import ConsultasFeed from "../components/ConsultasFeed";
 import lupa from "../assets/lupa.svg"
+import calendario from "../assets/calendario.png"
+
 
 function Consultas() {
   const [medico, setMedico] = useState({});
@@ -65,13 +67,13 @@ function Consultas() {
           </div>
           
           <div className="filtroData">
-            <img className='image-icons' src={lupa} alt="" />
+            <img className='image-icons' src={calendario} alt="" />
             <input 
               type="date" 
               value={dataInicio}
               onChange={(e) => setDataInicio(e.target.value)}
             />
-            <span style={{ margin: '0 10px' }}>até</span>
+            <span style={{ margin: '0 6px' }}>até</span>
             <input 
               type="date" 
               value={dataFim}
