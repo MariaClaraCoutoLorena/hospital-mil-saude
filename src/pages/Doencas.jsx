@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Head from "../components/Head";
 import DiseaseCard from "../components/DiseaseCard"
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { getDocs, collection, query, where, doc, getDoc } from "firebase/firestore";
 import { database } from '../config/firebase-config';
 import DiseaseFeed from "../components/DiseaseFeed"
 
@@ -16,9 +16,30 @@ function Doencas() {
     setSymptom(newArray);
   }
 
+  const [medico, setMedico] = useState({});
+    
+    const id = 'cXrZqbso4inFPbFHbD8f';
+    
+    const dbRef = doc(database, 'medicos', id);
+      
+    useEffect(() => {
+      const getDoctorById = async () => {
+        const docMedico = await getDoc(dbRef);
+    
+        if (docMedico.exists()) {
+          setMedico({ ...docMedico.data(), id: docMedico.id });
+        } else {
+          console.log("Médico não encontrado");
+        }
+      };
+    
+      getDoctorById();
+  
+    }, []);
+
   return (
     <>
-      <Head/>
+      <Head medico_nome={medico.nome} medico_crm={medico.crm}> </Head>
       <h1>Hospital Mil Saude</h1>
       <h1>Doencas</h1>
 
