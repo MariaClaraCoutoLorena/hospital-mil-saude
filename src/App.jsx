@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import Consultas from "./pages/Consultas";
 import Doencas from "./pages/Doencas";
+import Signin from "./pages/Signin"
 
 
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/:id" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/consultas/:id" element={<Consultas />} />
         <Route path="/consultas" element={<Consultas />} />
