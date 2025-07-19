@@ -1,6 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import avatar from '../assets/avatar.png'
+import { getAuth, signOut } from "firebase/auth";
+
 
 function Head(props) {
+
+    const auth = getAuth();
+    const navigate = useNavigate();
+
+    const signOutUser = async () => {
+        signOut(auth);
+        navigate("/");
+    }
     return (
         <div className="head">
 
@@ -10,9 +21,9 @@ function Head(props) {
                 <h2> {props.medico_crm} </h2>
             </div>
             
-            <button>
+            <button onClick={signOutUser}>
                 Log off
-            </button>
+            </button >
 
         </div>
     );
