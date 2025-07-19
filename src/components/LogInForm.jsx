@@ -39,15 +39,14 @@ function LogInForm(params) {
     }
     if(1){
         return (
-            <>
-                    <label>Email</label>
+            <div className="loginContainer">
+                    <label style={{width: "100%"}}>Email</label>
                     <input placeholder="Email" onChange={(e) => setUserEmail(e.target.value)} className="campo-login"/>
-                    <label>Senha</label>
+                    <label style={{width: "100%"}}>Senha</label>
                     <input placeholder="Senha" type="password" onChange={(e) => setUserPassword(e.target.value)} className="campo-login"/>
                     
                     <input type="submit" value="LogIn" onClick={signIn} className="botao-login"/>
-
-            </>
+            </div>
         );
 
     }

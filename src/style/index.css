@@ -149,15 +149,11 @@ body {
   align-items: center;
 }
 
-
-
-
 .consultaName p{
   font-size: 0.7em;
   margin-left: 0.5rem;
   align-items: center;
 }
-
 
 .DiseaseCID {
   font-size: 1.1em;
@@ -290,31 +286,79 @@ body {
 }
 .campo-login {
   display: block;
-  margin-bottom: 10px;
-  padding: 10px;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem 0rem 0.6rem 0.6rem;
   border-radius: 10px;
-  border: 1px solid #5e8c6a;
+  border: 0.1rem solid #5e8c6a;
   background-color: #C9EFC7;
   color: #5e8c6a;
-  width: 250px;
+  width: 15.4rem;
   outline: none;
-  font-size: 14px;
+  font-family: "Coming Soon", cursive;
 }
 .botao-login {
   justify-content:center;
   background-color: #85b987;
   color: white;
-  padding: 10px;
+  padding: 0.6rem 0rem 0.6rem 0rem;
   border: none;
-  border-radius: 10px;
-  width: 250px;
+  border-radius: 0.8rem;
+  width: 16rem;
   cursor: pointer;
   font-weight: bold;
-  font-size: 14px;
+  font-family: "Coming Soon", cursive;
 }
 .login-background {
   background-color: #C9EFC7;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.redirectLink {
+  padding-top: 1rem;
+  color: #40553aff;
+  outline: none;
+  text-decoration: none;
+  padding-bottom: 5rem;
+}
+.redirectLink:hover {
+  color: #030c00ff;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fundoPreto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.aviso {
+  width: 40%;
+  border: 0.05rem solid #af6d6dff;
+  padding: 0.1rem;
+  background-color: #f5e9e9ff;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+.fechar {
+  width: 100%;
+  outline: none;
+  text-decoration: none;
+  padding-left: 90%
 }
