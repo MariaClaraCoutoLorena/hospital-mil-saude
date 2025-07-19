@@ -13,6 +13,7 @@ function SignInForm(params) {
     const [userPassword, setUserPassword] = useState("");
     const [userCrm, setUserCrm] = useState("");
     const [adminUserValid, setAdminUserValid]  = useState(true);
+    const [crmValid, setCrmValid] = useState(true);
 
     const navigate = useNavigate();
 
@@ -49,7 +50,14 @@ function SignInForm(params) {
                 )}
                 <input placeholder="Email" onChange={(e) => setUserEmail(e.target.value)} className="campo-login"/>
                 <input placeholder="Senha" type="password" onChange={(e) => setUserPassword(e.target.value)} className="campo-login"/>
-                <input placeholder="crm" onChange={(e) => setUserCrm(e.target.value)} className="campo-login"/>
+                <input placeholder="CRM" onChange={(e) => setUserCrm(e.target.value)} className="campo-login" onBlur={(e) => !/[^0-9]/.test(e.target.value) && (e.target.value.length == 6 ) ? setCrmValid(true) : setCrmValid(false)}/>
+                {
+                    !crmValid &&(
+                        <div>
+                            <p>Crm inválido</p>
+                        </div>
+                    )
+                }
                 <input type="submit" value="SignIn" onClick={signIn} className="botao-login"></input>
         </>
     );
