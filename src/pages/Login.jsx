@@ -5,13 +5,19 @@ import { Link } from "react-router-dom";
 function Login() {
 
   return (
-    <>
+    <div className="container-centralizado">
       <h1>Hospital Mil Saude</h1>
-      <h1>Login</h1>
-      <LogInForm/>
+      <div className="login-background">
+
+        <h1>Login</h1>
+        <LogInForm/>
+        
+
+      </div>
       <Link to={"/signin"}>Não possui conta?</Link>
-      <Footer/>
-    </>
+ 
+    <Footer/>
+    </div>
   );
 }
 

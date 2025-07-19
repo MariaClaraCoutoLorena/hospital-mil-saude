@@ -5,13 +5,16 @@ import SignInForm from "../components/SignInForm";
 function Signin() {
 
   return (
-    <>
+    <div className="container-centralizado">
       <h1>Hospital Mil Saude</h1>
-      <h1>Login</h1>
-      <SignInForm/>
+      <div className="login-background">
+        <h1>SignIn</h1>
+        <SignInForm/>
+
+      </div>
       <Link to={"/login"}>Já possui conta?</Link>
       <Footer/>
-    </>
+    </div>
   );
 }
 

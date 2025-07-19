@@ -41,15 +41,16 @@ function SignInForm(params) {
    
     return (
         <>
+
                 {!adminUserValid && (
                     <div style={{ border: '1px solid red', padding: '10px', marginBottom: '10px', backgroundColor: '#ffe6e6' }}>
                         <p>Entre em contato com a administração para cadastrar o seu usuario no sistema</p>
                     </div>
                 )}
-                <input placeholder="Email" onChange={(e) => setUserEmail(e.target.value)}/>
-                <input placeholder="Senha" onChange={(e) => setUserPassword(e.target.value)}/>
-                <input placeholder="crm" onChange={(e) => setUserCrm(e.target.value)}/>
-                <input type="submit" value="SignIn" onClick={signIn}></input>
+                <input placeholder="Email" onChange={(e) => setUserEmail(e.target.value)} className="campo-login"/>
+                <input placeholder="Senha" type="password" onChange={(e) => setUserPassword(e.target.value)} className="campo-login"/>
+                <input placeholder="crm" onChange={(e) => setUserCrm(e.target.value)} className="campo-login"/>
+                <input type="submit" value="SignIn" onClick={signIn} className="botao-login"></input>
         </>
     );
 }

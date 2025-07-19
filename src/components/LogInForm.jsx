@@ -40,10 +40,12 @@ function LogInForm(params) {
     if(1){
         return (
             <>
-    
-                    <input placeholder="Email" onChange={(e) => setUserEmail(e.target.value)}/>
-                    <input placeholder="Senha" onChange={(e) => setUserPassword(e.target.value)}/>
-                    <input type="submit" value="SignIn" onClick={signIn}></input>
+                    <label>Email</label>
+                    <input placeholder="Email" onChange={(e) => setUserEmail(e.target.value)} className="campo-login"/>
+                    <label>Senha</label>
+                    <input placeholder="Senha" type="password" onChange={(e) => setUserPassword(e.target.value)} className="campo-login"/>
+                    
+                    <input type="submit" value="LogIn" onClick={signIn} className="botao-login"/>
 
             </>
         );
