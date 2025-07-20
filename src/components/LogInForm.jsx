@@ -37,7 +37,6 @@ function LogInForm(params) {
     
         
     }
-    if(1){
         return (
             <div className="loginContainer">
                     <label style={{width: "100%"}}>Email</label>
@@ -49,7 +48,6 @@ function LogInForm(params) {
             </div>
         );
 
-    }
 }
 
   export default LogInForm;
